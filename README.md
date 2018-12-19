@@ -53,8 +53,6 @@ And then get the generated flow files
 
 ``` java
 public class ProcessorTest {
-	private static final Logger logger = LoggerFactory.getLogger(LogMergeRecordTest.class);
-
 	private static final String TEMPLATE_NAME = "path_to_template.xml";
 	
 	@NiFiEntity(name = "Processor")
@@ -63,7 +61,6 @@ public class ProcessorTest {
 	@Before
 	public void setup() throws NiFiMockInitException {
 		NiFiMock.init(new File(TEMPLATE_NAME), this);
-		logger.info("template initialized");
 	}
 	
 	@Test
