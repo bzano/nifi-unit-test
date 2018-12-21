@@ -13,7 +13,7 @@
 - Template
 
 ``` java
-	private static final String TEMPLATE_NAME = "path_to_template.xml";
+	private static final String TEMPLATE_NAME = "path_to_template.xml"; // Specify the root filesystem path
 ```
 This is the template name you can download from NiFi after you finished designing your flow
 
@@ -22,7 +22,7 @@ The template should be in the resources folder
 - Processor
 
 ```java
-	@NiFiEntity(name = "Processor")
+	@NiFiEntity(name = "Processor") // Your processor name
 	TestRunner processor;
 ```
 
@@ -35,7 +35,7 @@ We can get processors we need with the NiFiEntity annotation
 To send events as input to the processor
 
 ```java
-	processor.enqueue(EVENT);
+	processor.enqueue(EVENT); // The input String or bytes[] message depending on the processor
 ```
 To Run the processor 
 
@@ -56,7 +56,7 @@ public class ProcessorTest {
 	private static final String TEMPLATE_NAME = "path_to_template.xml";
 	
 	@NiFiEntity(name = "Processor")
-	TestRunner processor;
+	TestRunner processor; // Will be init in the setUp() method, via NifiMock.init function
 
 	@Before
 	public void setup() throws NiFiMockInitException {
