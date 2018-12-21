@@ -1,7 +1,25 @@
-# NiFi Unit Test Framework
+# [NiFi Unit Test Framework](https://github.com/bzano/nifi-unit-test/)
+The Nifi Unit Test Framework allows you easily to perform unit tests on your Nifi components from a given Nifi template.
 
-## USAGE
-- maven dependency
+The Framework is developed in Java 1.8.
+
+Table of contents
+=================
+
+<!-- MarkdownTOC -->
+* [Usage](#usage)
+  * [Maven dependency](#maven-dependency)
+  * [Configuration](#configuration)
+    * [Template](#template)
+    * [Processor](#processor)
+    * [Run a processor](#run-a-processor)
+  * [Example](#example)
+<!-- /MarkdownTOC -->
+
+<a name="usage">Usage</a>
+------------
+
+### Maven dependency
 
 ``` maven
 <dependency>
@@ -10,46 +28,49 @@
 	<version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
-- Template
+
+### Configuration
+#### Template
+Specify the template name you can download from NiFi after you finished designing your flow.
+
+The template should be in the resources folder.
 
 ``` java
-	private static final String TEMPLATE_NAME = "path_to_template.xml"; // Specify the root filesystem path
-```
-This is the template name you can download from NiFi after you finished designing your flow
-
-The template should be in the resources folder
-
-- Processor
-
-```java
-	@NiFiEntity(name = "Processor") // Your processor name
-	TestRunner processor;
+private static final String TEMPLATE_NAME = "path_to_template.xml"; // Specify the root filesystem path
 ```
 
+### Processor
 UT is about testing each processor separately from the others
 
 We can get processors we need with the NiFiEntity annotation
 
-- Run processors
+```java
+@NiFiEntity(name = "Processor") // Your processor name
+TestRunner processor;
+```
+
+
+
+### Run a processor
 
 To send events as input to the processor
 
 ```java
-	processor.enqueue(EVENT); // The input String or bytes[] message depending on the processor
+processor.enqueue(EVENT); // The input String or bytes[] message depending on the processor
 ```
 To Run the processor 
 
 ```java
-	processor.run();
+processor.run();
 ```
 And then get the generated flow files
 
 ```java
-	processor.getFlowFilesForRelationship("success").get(0).assertContentEquals(EVENT);
+processor.getFlowFilesForRelationship("success").get(0).assertContentEquals(EVENT);
 ```
 
 
-- Unit Test Class
+## Example
 
 ``` java
 public class ProcessorTest {
