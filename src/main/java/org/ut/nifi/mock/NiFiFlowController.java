@@ -63,7 +63,7 @@ public class NiFiFlowController {
 	}
 
 	protected FlowController init() throws NiFiMockInitException {
-		loadBundles(this.getClass().getClassLoader());
+		loadBundles(getClass().getClassLoader());
 		FlowController flowController  = initFlowController();
 
 		instantiateSnippet(flowController);

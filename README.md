@@ -1,12 +1,12 @@
 # [NiFi Unit Test Framework](https://github.com/bzano/nifi-unit-test/)
 The Nifi Unit Test Framework allows you easily to perform unit tests on your Nifi components from a given Nifi template.
-
 The Framework is developed in Java 1.8.
 
 Table of contents
 =================
 
 <!-- MarkdownTOC -->
+* [UNSUPORTED YET](#unsuported)
 * [Usage](#usage)
   * [Maven dependency](#maven-dependency)
   * [Configuration](#configuration)
@@ -15,6 +15,11 @@ Table of contents
     * [Run a processor](#run-a-processor)
   * [Example](#example)
 <!-- /MarkdownTOC -->
+
+<a name="unsuported">UNSUPORTED YET</a>
+------------
+
+- HDFS Components
 
 <a name="usage">Usage</a>
 ------------
