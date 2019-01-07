@@ -1,5 +1,9 @@
 # NiFi Unit Test Framework
 
+## UNSUPORTED YET
+
+- HDFS Components
+
 ## USAGE
 - maven dependency
 
